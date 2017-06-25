@@ -1,0 +1,22 @@
+#!/bin/bash
+set -xeuo pipefail
+
+mkdir -p /var/lib/kudu/master
+mkdir -p /var/lib/kudu/tserver
+
+KUDU_MASTER=localhost
+KUDU_MASTER_OPTS="-logtostderr \
+         -fs_wal_dir=/var/lib/kudu/master \
+         -fs_data_dirs=/var/lib/kudu/master \
+         -webserver_doc_root=/app/www \
+         -use_hybrid_clock=false"
+KUDU_TSERVER_OPTS="-logtostderr \
+         -fs_wal_dir=/var/lib/kudu/tserver \
+         -fs_data_dirs=/var/lib/kudu/tserver \
+         -webserver_doc_root=/app/www \
+         -use_hybrid_clock=false"
+
+/app/kudu-master -fs_wal_dir /var/lib/kudu/master ${KUDU_MASTER_OPTS} &
+sleep 5s
+/app/kudu-tserver -fs_wal_dir /var/lib/kudu/tserver \
+        -tserver_master_addrs ${KUDU_MASTER} ${KUDU_TSERVER_OPTS}
