@@ -12,9 +12,9 @@ RUN yum install -y autoconf automake cyrus-sasl-devel cyrus-sasl-gssapi \
   cyrus-sasl-plain gcc gcc-c++ gdb git krb5-server krb5-workstation libtool \
   make openssl-devel patch pkgconfig redhat-lsb-core rsync unzip vim-common which wget
 
+ADD $KUDU_URL /tmp/${KUDU}.tar.gz
 
 RUN echo "Downloading $KUDU_URL" \
-  && wget -q $KUDU_URL -O /tmp/${KUDU}.tar.gz \
   && cd /tmp \
   && tar xf ${KUDU}.tar.gz \
   && /repo/build \
