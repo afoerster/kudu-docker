@@ -1,0 +1,9 @@
+#!/bin/bash
+
+docker build --build-arg KUDU_VERSION=$KUDU_VERSION -t kudu:$KUDU_VERSION -t kudu:latest .
+
+docker tag kudu:$KUDU_VERSION $DOCKER_REPO:$KUDU_VERSION
+
+if [[ $LATEST ]]; then
+  docker tag kudu:latest $DOCKER_REPO:latest
+fi

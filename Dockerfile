@@ -17,7 +17,7 @@ ADD $KUDU_URL /tmp/${KUDU}.tar.gz
 RUN echo "Downloading $KUDU_URL" \
   && cd /tmp \
   && tar xf ${KUDU}.tar.gz \
-  && /repo/build \
+  && /repo/build-kudu \
   && rm -r /tmp/*
 
 COPY ./entrypoint /

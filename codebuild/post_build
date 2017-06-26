@@ -1,0 +1,6 @@
+#!/bin/bash
+docker push $DOCKER_REPO:$KUDU_VERSION
+if [[ $LATEST ]]; then
+  docker push $DOCKER_REPO:latest
+fi
+

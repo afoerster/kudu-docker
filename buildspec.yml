@@ -9,19 +9,10 @@ env:
 phases:
   pre_build:
     commands:
-      - echo Logging in to Amazon ECR...
-      - echo Logging into Docker Hub...
-      - docker login -u "$DOCKER_USER" -p "$DOCKER_PASSWORD"
+      - codebuild/pre_build
   build:
     commands:
-      - echo Build started on `date`
-      - echo Building the Docker image...          
-      - docker build --build-arg KUDU_VERSION=$KUDU_VERSION -t kudu:$KUDU_VERSION -t kudu:latest .
-      - docker tag kudu:$KUDU_VERSION $DOCKER_REPO:$KUDU_VERSION
-        #      - docker tag kudu:latest $DOCKER_REPO:latest
+      - codebuild/build
   post_build:
     commands:
-      - echo Build completed on `date`
-      - echo Pushing the Docker image...
-      - docker push $DOCKER_REPO:$KUDU_VERSION
-        #      - docker push $DOCKER_REPO:latest
+      - codebuild/post_build
