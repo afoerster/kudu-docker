@@ -5,6 +5,7 @@ env:
     DOCKER_REPO: "amfoerster/apache-kudu" # No trailing slash
     PARALLEL: "8"
     DOCKER_USER: "amfoerster"
+    IMAGE: "centos:7"
     LATEST: true
 phases:
   pre_build:
