@@ -1,6 +1,6 @@
 FROM "centos:7"
 
-ARG KUDU_VERSION=1.4.0
+ARG KUDU_VERSION=1.5.0
 ARG PARALLEL=8
 
 ENV KUDU=apache-kudu-${KUDU_VERSION}
@@ -19,6 +19,7 @@ RUN echo "Downloading $KUDU_URL" \
   && tar xf ${KUDU}.tar.gz \
   && /repo/build-kudu \
   && rm -r /tmp/*
+
 
 COPY ./entrypoint /
 
