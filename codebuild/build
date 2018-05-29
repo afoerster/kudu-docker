@@ -1,8 +1,0 @@
-#!/bin/bash
-docker build --build-arg KUDU_VERSION=$KUDU_VERSION --build-arg IMAGE=$IMAGE -t kudu:$KUDU_VERSION -t kudu:latest .
-tag=$(echo $IMAGE-$KUDU_VERSION | sed 's/:/-/g')
-docker tag kudu:$tag $DOCKER_REPO:$tag
-
-if [[ $LATEST ]]; then
-  docker tag kudu:latest $DOCKER_REPO:latest
-fi

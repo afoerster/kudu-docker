@@ -1,8 +1,0 @@
-#!/bin/bash
-tag=$(echo $IMAGE-$KUDU_VERSION | sed 's/:/-/g')
-
-docker push $DOCKER_REPO:$tag
-if [[ $LATEST ]]; then
-  docker push $DOCKER_REPO:latest
-fi
-

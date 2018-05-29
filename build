@@ -1,0 +1,5 @@
+#!/bin/bash
+VERSION=1.4.0
+docker build -t amfoerster/apache-kudu:$VERSION -t amfoerster/apache-kudu:latest . 
+docker push amfoerster/apache-kudu:$VERSION
+docker push amfoerster/apache-kudu:latest
