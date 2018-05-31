@@ -3,4 +3,4 @@ set -euo pipefail
 touch /var/log/kudu-tserver.log
 touch /var/log/kudu-master.log
 
-tail -f /var/log/kudu*
+tail -f /var/log/kudu-tserver.log /var/log/kudu-master.log

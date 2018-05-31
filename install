@@ -1,4 +1,4 @@
 #!/bin/bash
 set -euo pipefail
-curl http://archive.cloudera.com/kudu/redhat/7/x86_64/kudu/cloudera-kudu.repo > /etc/yum.repos.d/kudu.repo
+curl https://archive.cloudera.com/cdh5/redhat/7/x86_64/cdh/cloudera-cdh5.repo > /etc/yum.repos.d/cdh.repo
 yum -y install kudu
