@@ -6,11 +6,12 @@ Image can be found on [DockerHub](https://hub.docker.com/r/amfoerster/apache-kud
 ## Getting Started
 
 ```
-docker run -d --rm --name apache-kudu -p 7051:7051 -p 7050:7050 -p 8051:8051 -p 8050:8050 amfoerster/apache-kudu
+docker run -t -d --rm --name apache-kudu -p 7051:7051 -p 7050:7050 -p 8051:8051 -p 8050:8050 amfoerster/apache-kudu
 
 ```
 
-Kudu doesn't start by default, start it with:
+Kudustarts by default. To have Kudu not start pass `-e KUDU_START=false`,
+Kudu can then be started manually:
 
 ```
 docker exec -it apache-kudu /kudu-start

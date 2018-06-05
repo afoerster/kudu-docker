@@ -3,4 +3,9 @@ set -euo pipefail
 touch /var/log/kudu-tserver.log
 touch /var/log/kudu-master.log
 
+if  $KUDU_START
+then
+    /kudu-start
+fi
+
 tail -f /var/log/kudu-tserver.log /var/log/kudu-master.log
